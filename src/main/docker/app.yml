@@ -1,0 +1,14 @@
+version: '2'
+services:
+    unittest-app:
+        image: unittest
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://unittest-postgresql:5432/unittest
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    unittest-postgresql:
+        extends:
+            file: postgresql.yml
+            service: unittest-postgresql
